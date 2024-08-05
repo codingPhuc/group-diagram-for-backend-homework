@@ -1,0 +1,32 @@
+@startuml edit-note
+|User|
+start
+' repeat
+    :click edit button;
+    ' :User chooses the King piece;
+    ' backward :show error message;
+    |router|
+    :create input block;
+    :change add button text to edit;
+    |User|
+    :add in text;
+    repeat
+    backward :show error data "input is incorrect";
+    repeat
+    backward :show error message "action is incorrect";
+    :click save button ; 
+    |router|
+    :call router;
+    repeat while (check if url is valid) is (Reponse status code:400(error))
+    ->url valid;
+    |controller| 
+    repeat while (check if url is valid) is (Reponse status code:400(error))
+    ->data valid;
+    ' if (Has the King moved?) then (yes)
+' repeat while (is valid) is (Reponse status code:400(error))
+' ->Reponse status code:201(success);
+    :update list; 
+    stop
+
+
+@enduml
